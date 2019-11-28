@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".NouveauContact">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@android:color/holo_blue_dark"/>
+
+    <EditText
+        android:id="@+id/nomContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nom"
+        android:layout_margin="15dp"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/prenomContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Prénom"
+        android:layout_margin="15dp"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/surnomContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Surnom"
+        android:layout_margin="15dp"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/numeroContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Téléphone"
+        android:layout_margin="15dp"
+        android:inputType="number"/>
+
+    <Button
+        android:id="@+id/submitContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="enregistrer"
+        android:layout_margin="0dp"
+        android:padding="10dp"/>
+</LinearLayout>
