@@ -13,7 +13,8 @@ import com.example.bintada.R;
 import java.util.List;
 
 public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactViewHoloder> {
-    List<Contact> contactList;
+    private final List<Contact> contactList;
+    private final OnItemClickListener listener;
 
     public static class ContactViewHoloder extends RecyclerView.ViewHolder {
 
@@ -27,10 +28,20 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
             this.numero = itemView.findViewById(R.id.numero);
             this.surnom = itemView.findViewById(R.id.surnom);
         }
+
+        public void bind(final Contact contact, final OnItemClickListener listener) {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(contact);
+                }
+            });
+        }
     }
 
-    public ContactAdapter(List<Contact> contactList) {
-        this.contactList = contactList;
+    public ContactAdapter(List<Contact> contactList, OnItemClickListener listener) {
+        this.contactList    = contactList;
+        this.listener       = listener;
     }
 
     @NonNull
@@ -43,6 +54,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
 
     @Override
     public void onBindViewHolder(@NonNull ContactViewHoloder holder, int position) {
+        holder.bind(contactList.get(position), listener);
         Contact contact = contactList.get(position);
         String infoText = contact.getNom() + "  " + contact.getPrenom();
         String phone    = Integer.toString(contact.getNumero());
@@ -54,6 +66,10 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     @Override
     public int getItemCount() {
         return contactList.size();
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(Contact itemContact);
     }
 
 
