@@ -1,4 +1,4 @@
-package com.example.bintada.data;
+package com.example.bintada;
 
 import androidx.annotation.NonNull;
 
@@ -11,7 +11,7 @@ public class Contact {
 
     public Contact(){}
 
-    public Contact(String nom, String prenom, String surnom, int numero) {
+    Contact(String nom, String prenom, String surnom, int numero) {
         this.nom    = nom;
         this.prenom = prenom;
         this.surnom = surnom;

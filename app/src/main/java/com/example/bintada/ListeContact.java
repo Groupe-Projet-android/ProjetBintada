@@ -1,20 +1,32 @@
 package com.example.bintada;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
-import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ListeContact extends AppCompatActivity {
 
-    ListView mListView;
-    private String[] prenoms = new String[]{
-            "Antoine", "Benoit", "Cyril", "David", "Eloise", "Florent", "Gerard", "Hugo",
-            "Ingrid", "Jonathan", "Kevin", "Logan", "Matthieu", "Noémie", "Olivia", "Phillipe"
-    };
+    public ContactCread contactCread;
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+
+
+
+
+    //List<Contact> contactList = new ArrayList<Contact>() {};
+
+/*
+
+    public ListeContact() {
+        contactCread = new ContactCread(ListeContact.this);
+    }
+*/
+
 
 
     @Override
@@ -22,11 +34,22 @@ public class ListeContact extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_contact);
 
-        mListView   = (ListView) findViewById(R.id.listview);
+        List<Contact> contactList = new ArrayList<Contact>() {};
 
-        final ArrayAdapter<String> adapter;
-        adapter = new ArrayAdapter<String>(ListeContact.this, R.layout.activity_liste_contact, prenoms);
-        mListView.setAdapter(adapter);
+        contactList.add(new Contact("medi", "yann", "carion", 1234));
+        contactList.add(new Contact("medi", "yann", "carion", 1234));
+        contactList.add(new Contact("medi", "yann", "carion", 1234));
+
+        //contactCread    = new ContactCread(ListeContact.this);
+        //contactList     =  contactCread.listerTousContact();
+
+        recyclerView = (RecyclerView) findViewById(R.id.contact_recycler);
+
+        layoutManager   =   new LinearLayoutManager(ListeContact.this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        ContactAdapter contactAdapter   =    new ContactAdapter(contactList);
+        recyclerView.setAdapter(contactAdapter);
 
     }
 }

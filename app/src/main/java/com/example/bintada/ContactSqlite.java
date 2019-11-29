@@ -1,4 +1,4 @@
-package com.example.bintada.data;
+package com.example.bintada;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

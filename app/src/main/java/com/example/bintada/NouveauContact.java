@@ -10,9 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.bintada.data.Contact;
-import com.example.bintada.data.ContactCread;
-import com.example.bintada.data.ContactSqlite;
+import com.example.bintada.Contact;
+import com.example.bintada.ContactCread;
+import com.example.bintada.ContactSqlite;
 
 import java.util.Arrays;
 import java.util.List;

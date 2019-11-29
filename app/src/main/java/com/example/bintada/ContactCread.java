@@ -1,4 +1,4 @@
-package com.example.bintada.data;
+package com.example.bintada;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -28,7 +28,7 @@ public class ContactCread {
 
     private SQLiteDatabase bdd;
 
-    private ContactSqlite contactSqlite;
+    protected ContactSqlite contactSqlite;
 
     public ContactCread(Context context) {
         contactSqlite   = new ContactSqlite(context, BDDNAME, null, VERSION_BDD);
@@ -92,8 +92,8 @@ public class ContactCread {
         return curseurEnContact1(curseur);
     }
 
-    public List<Contact> listerTousContact() {
-        List<Contact> Contacts = new ArrayList<Contact>();
+    public List<Contact>  listerTousContact() {
+        List<Contact> Contacts = new ArrayList<Contact>() {};
 
         Cursor curseur = bdd.query(
                 TABLE_CONTACT,
