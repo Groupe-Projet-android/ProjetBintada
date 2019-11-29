@@ -21,7 +21,7 @@ public class InfoContact extends AppCompatActivity {
         btnRetour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentList = new Intent(InfoContact.this, ListeContact.class);
+                Intent intentList = new Intent(InfoContact.this, MainActivity.class);
                 startActivity(intentList);
             }
         });

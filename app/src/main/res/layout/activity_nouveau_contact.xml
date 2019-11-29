@@ -9,6 +9,13 @@
     android:gravity="center"
     tools:context=".NouveauContact">
 
+    <Button
+        android:id="@+id/btnretourlist"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Retour"
+        android:layout_margin="15dp"/>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="200dp"

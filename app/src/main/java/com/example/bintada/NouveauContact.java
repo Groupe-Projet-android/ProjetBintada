@@ -21,6 +21,8 @@ import java.util.Objects;
 
 public class NouveauContact extends AppCompatActivity {
 
+    private Button btnList;
+
     private EditText mNom;
     private EditText mPrenom;
     private EditText mSurnom;
@@ -40,75 +42,10 @@ public class NouveauContact extends AppCompatActivity {
         mNumero = (EditText) findViewById(R.id.numeroContact);
         mSubmit = (Button) findViewById(R.id.submitContact);
 
+        btnList = (Button) findViewById(R.id.btnretourlist);
+
         //mSubmit.setEnabled(false);
 
-        mNom.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //mSubmit.setEnabled(s.toString().length() != 0);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        mPrenom.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mSubmit.setEnabled(s.toString().length() != 0);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        mSurnom.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mSubmit.setEnabled(s.toString().length() != 0);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        mNumero.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mSubmit.setEnabled(s.toString().length() != 0);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,10 +98,14 @@ public class NouveauContact extends AppCompatActivity {
                     Toast.makeText(NouveauContact.this, messageErreur, Toast.LENGTH_LONG).show();
                 }
 
-
-
-
                 contactCread.close();
+            }
+        });
+
+        btnList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

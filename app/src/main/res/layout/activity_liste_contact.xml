@@ -11,8 +11,12 @@
         android:scrollbars="vertical"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
+        android:id="@+id/btnadd"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="40dp"
+        android:elevation="600dp"
         android:background="@drawable/plus"/>
 </RelativeLayout>

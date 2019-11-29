@@ -4,12 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListeContact extends AppCompatActivity {
+
+    Button btnAdd;
 
     public ContactCread contactCread;
     private RecyclerView recyclerView;
@@ -45,6 +50,7 @@ public class ListeContact extends AppCompatActivity {
         contactList     =  contactCread.listerTousContact();
 
         recyclerView = (RecyclerView) findViewById(R.id.contact_recycler);
+        btnAdd = (Button) findViewById(R.id.btnadd);
 
         layoutManager   =   new LinearLayoutManager(ListeContact.this);
         recyclerView.setLayoutManager(layoutManager);
@@ -53,6 +59,13 @@ public class ListeContact extends AppCompatActivity {
         recyclerView.setAdapter(contactAdapter);
 
         contactCread.close();
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentCreate = new Intent(ListeContact.this, NouveauContact.class);
+            }
+        });
 
     }
 }
