@@ -17,12 +17,10 @@
         android:src="@drawable/ic_launcher_foreground"/>
 
     <Button
-        android:id="@+id/btnstart"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_margin="50dp"
         android:textSize="30sp"
-        android:text="commençons"
-        tools:ignore="InvalidId" />
+        android:text="commençons"/>
 
 </LinearLayout>

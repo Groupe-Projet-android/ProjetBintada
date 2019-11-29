@@ -34,14 +34,15 @@ public class ListeContact extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_contact);
 
-        List<Contact> contactList = new ArrayList<Contact>() {};
+        List<Contact> contactList = new ArrayList<Contact>() {};/*
 
         contactList.add(new Contact("medi", "yann", "carion", 1234));
         contactList.add(new Contact("medi", "yann", "carion", 1234));
         contactList.add(new Contact("medi", "yann", "carion", 1234));
-
-        //contactCread    = new ContactCread(ListeContact.this);
-        //contactList     =  contactCread.listerTousContact();
+*/
+        contactCread    = new ContactCread(ListeContact.this);
+        contactCread.open();
+        contactList     =  contactCread.listerTousContact();
 
         recyclerView = (RecyclerView) findViewById(R.id.contact_recycler);
 
@@ -50,6 +51,8 @@ public class ListeContact extends AppCompatActivity {
 
         ContactAdapter contactAdapter   =    new ContactAdapter(contactList);
         recyclerView.setAdapter(contactAdapter);
+
+        contactCread.close();
 
     }
 }

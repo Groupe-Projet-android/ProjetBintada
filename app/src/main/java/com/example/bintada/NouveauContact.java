@@ -2,6 +2,7 @@ package com.example.bintada;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -144,10 +145,15 @@ public class NouveauContact extends AppCompatActivity {
                         String messageConfirmation = "Merci Bien, " + surnom + " a bien été enregistré";
 
                         Toast.makeText(NouveauContact.this, messageConfirmation, Toast.LENGTH_LONG).show();
+
+                        Intent intentList = new Intent(NouveauContact.this, ListeContact.class);
+                        startActivity(intentList);
                     } else {
                         String messageErreur = "Le détenteur du numéro " + phone + " existe déja.";
 
                         Toast.makeText(NouveauContact.this, messageErreur, Toast.LENGTH_LONG).show();
+
+
                     }
                 } else {
                     String messageErreur = "Tous les champs sont obligatoires, Merci !!!";
