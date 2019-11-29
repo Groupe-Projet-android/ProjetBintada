@@ -14,13 +14,17 @@ import com.example.bintada.data.Contact;
 import com.example.bintada.data.ContactCread;
 import com.example.bintada.data.ContactSqlite;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
 public class NouveauContact extends AppCompatActivity {
 
     private EditText mNom;
     private EditText mPrenom;
     private EditText mSurnom;
     private EditText mNumero;
-    private Button mSubmit;
+    private Button   mSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +39,7 @@ public class NouveauContact extends AppCompatActivity {
         mNumero = (EditText) findViewById(R.id.numeroContact);
         mSubmit = (Button) findViewById(R.id.submitContact);
 
-        mSubmit.setEnabled(false);
+        //mSubmit.setEnabled(false);
 
         mNom.addTextChangedListener(new TextWatcher() {
             @Override
@@ -45,7 +49,7 @@ public class NouveauContact extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mSubmit.setEnabled(s.toString().length() != 0);
+                //mSubmit.setEnabled(s.toString().length() != 0);
             }
 
             @Override
@@ -108,30 +112,53 @@ public class NouveauContact extends AppCompatActivity {
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
-                Contact contact = new Contact(
-                        mNom.toString(),
-                        mPrenom.toString(),
-                        mSurnom.toString(),
-                        Integer.parseInt(mNumero.toString())
-                );
-*/
+
+                String nom = (String) mNom.getText().toString();
+                String prenom = (String) mPrenom.getText().toString();
+                String surnom = (String) mSurnom.getText().toString();
+                String phone = (String) mNumero.getText().toString();
+
+
+/*
                 Contact contact = new Contact(
                         "Medi",
                        "Yann",
                         "Carion",
                         57357598
                 );
-                /*
-                contactCread.open();
-                contactCread.insererContact(contact);
-
-                //Contact actucontact = contactCread.listerContactParNom(mSurnom.toStr);
-
-                Toast.makeText(NouveauContact.this, "Carion", Toast.LENGTH_LONG).show();
-                contactCread.close();
-
 */
+                contactCread.open();
+
+
+
+
+                if (!nom.equals("") && !prenom.equals("") && !surnom.equals("") && !phone.equals("")) {
+                    int numero = Integer.parseInt(phone);
+                    Contact vcontact = contactCread.listerContactParNumero(numero);
+                    if (vcontact == null) {
+
+
+                        Contact contact = new Contact(nom, prenom, surnom, numero);
+                        contactCread.insererContact(contact);
+
+                        String messageConfirmation = "Merci Bien, " + surnom + " a bien été enregistré";
+
+                        Toast.makeText(NouveauContact.this, messageConfirmation, Toast.LENGTH_LONG).show();
+                    } else {
+                        String messageErreur = "Le détenteur du numéro " + phone + " existe déja.";
+
+                        Toast.makeText(NouveauContact.this, messageErreur, Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    String messageErreur = "Tous les champs sont obligatoires, Merci !!!";
+
+                    Toast.makeText(NouveauContact.this, messageErreur, Toast.LENGTH_LONG).show();
+                }
+
+
+
+
+                contactCread.close();
             }
         });
     }

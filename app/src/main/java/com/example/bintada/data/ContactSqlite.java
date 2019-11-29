@@ -17,7 +17,7 @@ public class ContactSqlite extends SQLiteOpenHelper {
 
     private static final String CREATE_BDD      = "CREATE TABLE " + TABLE_CONTACT + " ("
             + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_NOM + " TEXT NOT NULL, "
-            + COL_PRENOM + " TEXT NOT NULL " + COL_SURNOM + " TEXT NOT NULL " + COL_NUMERO + " TEXT NOT NULL);";
+            + COL_PRENOM + " TEXT NOT NULL, " + COL_SURNOM + " TEXT NOT NULL, " + COL_NUMERO + " TEXT NOT NULL);";
 
     public ContactSqlite(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
