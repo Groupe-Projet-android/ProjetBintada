@@ -64,6 +64,7 @@ public class ListeContact extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentCreate = new Intent(ListeContact.this, NouveauContact.class);
+                startActivity(intentCreate);
             }
         });
 
