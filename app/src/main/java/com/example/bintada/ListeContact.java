@@ -1,6 +1,7 @@
 package com.example.bintada;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,7 +23,6 @@ public class ListeContact extends AppCompatActivity {
     public ContactCread contactCread;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-
 
 
 
@@ -60,15 +60,13 @@ public class ListeContact extends AppCompatActivity {
         layoutManager   =   new LinearLayoutManager(ListeContact.this);
         recyclerView.setLayoutManager(layoutManager);
 
-        ContactAdapter contactAdapter   =    new ContactAdapter(contactList, new ContactAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(Contact itemContact) {
-                Toast.makeText(ListeContact.this, "Item Contact Cliqué", Toast.LENGTH_LONG).show();
-            }
-        });
+        ContactAdapter contactAdapter   =    new ContactAdapter(contactList);
+
         recyclerView.setAdapter(contactAdapter);
 
         contactCread.close();
+
+
 
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
